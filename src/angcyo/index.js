@@ -9,6 +9,7 @@ import router from './base/router'
  * https://www.iviewui.com/docs/guide/start
  * */
 import ViewUI from 'view-design'
+import 'view-design/dist/styles/iview.css'
 
 /**
  * 首页

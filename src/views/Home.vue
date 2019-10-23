@@ -1,6 +1,11 @@
 <template>
     <div class="home">
         <div class="search_wrap">
+            <CheckboxGroup v-model="border">
+                <Checkbox label="香蕉" border></Checkbox>
+                <Checkbox label="苹果" border></Checkbox>
+                <Checkbox label="西瓜" border></Checkbox>
+            </CheckboxGroup>
         </div>
     </div>
 </template>
@@ -8,7 +13,12 @@
 <script>
     export default {
         name: 'home',
-        components: {}
+        components: {},
+        data() {
+            return {
+                border: ['香蕉','西瓜']
+            }
+        }
     }
 </script>
 
