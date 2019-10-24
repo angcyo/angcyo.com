@@ -5,6 +5,7 @@
                    placeholder="搜你想搜..."
                    :value="value"
                    @input="$emit('input', $event.target.value)"
+                   @keyup.enter="onEnter"
                    class="SearchInput">
             <div class="SearchActionWrap">
                 <button class="SearchItem SearchMain" title="使用搜索引擎搜索"/>
@@ -22,5 +23,10 @@
         props: {
             value: String
         },
+        methods: {
+            onEnter() {
+                this.$Message.info(this.value)
+            }
+        }
     }
 </script>
