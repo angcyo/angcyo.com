@@ -1,14 +1,95 @@
 .SearchEdit {
-    // Vars
+  // Vars
+  $actionSize: 25px;
+  $actionApiSize: 30px;
 
-    // Support
+  $actionColor: #a7a7a7;
+  $actionColorHover: #4e92df;
 
-    // Module
-    & {
-        //
+  // Support
+
+  // Module
+  & {
+    //background: rgba(0, 0, 0, 0.19);
+  }
+
+  .SearchWrap {
+    width: 100%;
+    height: 45px;
+    box-shadow: 1px 1px 6px 0 rgba(119, 119, 119, .5);
+    border-radius: 25px !important;
+    border-width: 0;
+    display: flex;
+    flex-direction: row;
+
+    .SearchInput {
+      flex-grow: 1;
+      padding: 10px 10px 10px 20px;
+      font-size: 18px;
+      color: #555;
+      border-width: 0;
+      background: none;
+
+      &:focus {
+        outline: none;
+      }
     }
 
-    // Facets
+    .SearchActionWrap {
+      height: 100%;
+      padding-right: 10px;
 
-    // States
+      .SearchItem {
+        height: 100%;
+        width: 35px;
+      }
+
+      .SearchMain {
+        background-color: $actionColor;
+        mask-image: url("../../assets/search.svg");
+        mask-repeat: no-repeat;
+        mask-position: center center;
+        mask-size: $actionApiSize $actionApiSize;
+
+        &:hover {
+          background-color: $actionColorHover;
+          mask-size: $actionApiSize $actionApiSize;
+          cursor: pointer;
+        }
+      }
+
+      .SearchApi {
+        background-color: $actionColor;
+        mask-image: url("../../assets/android.svg");
+        mask-repeat: no-repeat;
+        mask-position: center center;
+        mask-size: $actionApiSize $actionApiSize;
+
+        &:hover {
+          background-color: $actionColorHover;
+          mask-size: $actionApiSize $actionApiSize;
+          cursor: pointer;
+        }
+      }
+
+      .SearchJcenter {
+        background-color: $actionColor;
+        mask-image: url("../../assets/library.svg");
+        mask-repeat: no-repeat;
+        mask-position: center center;
+        mask-size: $actionApiSize $actionApiSize;
+
+        &:hover {
+          background-color: $actionColorHover;
+          mask-size: $actionApiSize $actionApiSize;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+
+  // Facets
+
+  // States
 }
