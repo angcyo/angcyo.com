@@ -1,11 +1,7 @@
 <template>
     <div class="home">
         <div class="search_wrap">
-            <CheckboxGroup v-model="border">
-                <Checkbox label="香蕉" border></Checkbox>
-                <Checkbox label="苹果" border></Checkbox>
-                <Checkbox label="西瓜" border></Checkbox>
-            </CheckboxGroup>
+<!--            <Input v-model="search_word" search enter-button="Search" placeholder="搜你想搜..." size="large" clearable autofocus/>-->
         </div>
     </div>
 </template>
@@ -16,7 +12,7 @@
         components: {},
         data() {
             return {
-                border: ['香蕉','西瓜']
+                search_word: ''
             }
         }
     }
@@ -35,9 +31,9 @@
     }
 
     .search_wrap {
-        width: 928px;
+        width: 521px;
         height: 100px;
-        background: aqua;
+        /*background: aqua;*/
     }
 
 </style>
