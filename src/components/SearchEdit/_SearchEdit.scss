@@ -21,6 +21,11 @@
     border-width: 0;
     display: flex;
     flex-direction: row;
+    tab-index: 0;
+
+    &:hover {
+      box-shadow: 1px 1px 6px 0 $actionColorHover;
+    }
 
     .SearchInput {
       flex-grow: 1;
