@@ -10,6 +10,15 @@
     margin-bottom: 2px;
   }
 
+  @media screen and (max-width: 900px) {
+    & {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap-reverse;
+      justify-content: center;
+    }
+  }
+
   // Facets
 
   // States

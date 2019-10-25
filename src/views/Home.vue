@@ -143,4 +143,18 @@
         transform: translateY(-100px);
     }
 
+    @media screen and (max-width: 900px) {
+        .home {
+            padding-top: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .search_wrap {
+            width: 100%;
+            margin: 0 10px;
+            transform: translateY(0px);
+        }
+    }
 </style>

@@ -25,7 +25,14 @@
     transform: translateY(0px);
   }
 
+  @media screen and (max-width: 900px) {
+    & {
+      transform: translateY(0px);
+    }
+  }
+
   // Facets
 
   // States
 }
+
