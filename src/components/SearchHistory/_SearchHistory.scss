@@ -30,6 +30,15 @@
 
   // States
 
+  .clickItem {
+
+    @media screen and (max-width: 900px) {
+      & {
+        position: relative;
+      }
+    }
+  }
+
   .clickItem:hover, .clickItem:focus {
     color: #555;
     text-decoration: none;
@@ -48,7 +57,10 @@
 
     @media screen and (max-width: 900px) {
       & {
-        margin-top: -15px;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        margin-top: -10px;
         opacity: 1 !important;
       }
     }
