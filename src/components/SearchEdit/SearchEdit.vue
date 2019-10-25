@@ -6,6 +6,8 @@
                    :value="value"
                    @input="$emit('input', $event.target.value)"
                    @keyup.enter="onEnter"
+                   @focusout="onFocus(false)"
+                   @focus="onFocus(true)"
                    class="SearchInput">
             <div class="SearchActionWrap">
                 <button class="SearchItem SearchMain" title="使用搜索引擎搜索" @click="onEnter"/>
@@ -34,6 +36,9 @@
             onSearchJcenter() {
                 this.$emit("onSearchJcenter", this.value)
             },
+            onFocus(focused) {
+                this.$emit("onFocus", focused)
+            }
         }
     }
 </script>
