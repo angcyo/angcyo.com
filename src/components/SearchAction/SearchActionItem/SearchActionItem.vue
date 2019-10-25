@@ -15,7 +15,8 @@
                 title: String,
                 colorTop: String,
                 colorBg: String,
-                color: String
+                color: String,
+                url: String
             },
             isSelected: {
                 type: Boolean,
@@ -25,6 +26,11 @@
         data() {
             return {
                 selected: this.isSelected
+            }
+        },
+        watch: {
+            isSelected(val) {
+                this.selected = val
             }
         },
         methods: {

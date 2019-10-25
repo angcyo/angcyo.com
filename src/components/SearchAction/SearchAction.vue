@@ -12,44 +12,57 @@
 
     export default {
         components: {SearchActionItem},
-        props: {},
-        data() {
-
-            /**默认搜索项*/
-            const defaultItems = [
-                {
-                    title: "百度",
-                    colorBg: "#2319DC",
-                    colorTop: "#2319DC",
-                    isSelected: true
-                },
-                {
-                    title: "谷歌",
-                    colorBg: "#36A854",
-                    colorTop: "#36A854"
-                },
-                {
-                    title: "秘迹",
-                    colorBg: "#575757",
-                    colorTop: "#575757",
-                    isSelected: true
+        props: {
+            selectMode: {
+                type: Number,
+                default: 1, //1单选, 2多选
+                validate(value) {
+                    return value === 1 || value === 2
                 }
-            ]
-
-            /**恢复之前选中状态*/
-            let items = this.getSelectItems() || defaultItems
-
-            _.forEach(defaultItems, item => {
-                item.isSelected = _.find(items, i => {
-                    return i.title === item.title
-                }).isSelected
-            })
-
-            return {
-                actionItems: defaultItems
             }
         },
-
+        data() {
+            return {
+                /**默认搜索项*/
+                defaultItems: [
+                    {
+                        title: "百度",
+                        colorTop: "#2319DC",
+                        isSelected: true,
+                        url: "https://www.baidu.com/s?wd="
+                    },
+                    {
+                        title: "谷歌",
+                        colorTop: "#36A854",
+                        url: "https://www.google.com/search?&q="
+                    },
+                    {
+                        title: "秘迹",
+                        colorTop: "#575757",
+                        url: "https://mijisou.com/?q="
+                    },
+                    {
+                        title: "必应",
+                        colorTop: "#00EDE9",
+                        url: "https://www.bing.com/search?q="
+                    },
+                    {
+                        title: "搜狗",
+                        colorTop: "#FE6A13",
+                        url: "https://www.sogou.com/web?query="
+                    },
+                    {
+                        title: "360搜索",
+                        colorTop: "#0FB264",
+                        url: "https://www.so.com/s?q=123"
+                    }
+                ],
+                actionItems: []
+            }
+        },
+        created() {
+            this.initDefaultItems()
+        },
         methods: {
             /**获取选中的历史记录*/
             getSelectItems() {
@@ -73,8 +86,43 @@
             },
             /**事件*/
             onItemSelect(isSelected, item) {
+                if (isSelected) {
+                    this.clearSelect()
+                }
                 item.isSelected = isSelected
                 this.saveSelectItems(item)
+                this.$emit("onSelectItems", this.getSelectItems())
+                if (this.selectMode === 1) {
+                    this.initDefaultItems()
+                }
+            },
+            clearSelect() {
+                if (this.selectMode === 1) {
+                    //单选
+                    const allItems = this.getSelectItems()
+                    _.forEach(allItems, item => {
+                        item.isSelected = false
+                    })
+                    window.localStorage.setItem("selected_items", JSON.stringify(allItems))
+                }
+            },
+            initDefaultItems() {
+                /**恢复之前选中状态*/
+                let items = this.getSelectItems() || this.defaultItems
+
+                _.forEach(this.defaultItems, item => {
+                    const findItem = _.find(items, i => {
+                        return i.title === item.title
+                    })
+
+                    if (findItem) {
+                        item.isSelected = findItem.isSelected || false
+                    }
+                })
+
+                this.actionItems = this.defaultItems
+                this.$emit("onSelectItems", this.defaultItems)
+                this.$forceUpdate()
             }
         }
     };
