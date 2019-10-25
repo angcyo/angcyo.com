@@ -113,7 +113,13 @@
                 this.showHistory = false
             },
             onFocus(focused) {
-                this.showHistory = focused || true
+                if (focused) {
+                    this.showHistory = true
+                } else {
+                    window.setTimeout(() => {
+                        this.showHistory = false
+                    }, 300)
+                }
             }
         }
     }
