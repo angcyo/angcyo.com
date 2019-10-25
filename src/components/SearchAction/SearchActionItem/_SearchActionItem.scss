@@ -1,0 +1,31 @@
+.SearchActionItem {
+  // Vars
+
+  // Support
+
+  // Module
+  & {
+    //
+    display: inline-block;
+    line-height: 100%;
+    text-align: center;
+    padding: 10px;
+    font-size: 16px;
+    background: #EEEEEE;
+    border-top-color: #4e92df;
+    border-top-width: 4px;
+    border-top-style: solid;
+    margin: 0 10px 0 0;
+    transition: all 300ms;
+    transform: translateY(27px);
+    cursor: pointer;
+  }
+
+  &:hover {
+    transform: translateY(0px);
+  }
+
+  // Facets
+
+  // States
+}

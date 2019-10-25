@@ -1,19 +1,21 @@
 <template>
     <div class="home">
         <div class="search_wrap">
-            <!--            <Input v-model="search_word" search enter-button="Search" placeholder="搜你想搜..." size="large" clearable autofocus/>-->
-            <SearchEdit v-model="searchKey">search</SearchEdit>
+            <SearchAction>选择搜索引擎</SearchAction>
+            <SearchEdit v-model="searchKey">搜索输入框</SearchEdit>
         </div>
     </div>
 </template>
 
 <script>
     import SearchEdit from "@/components/SearchEdit/SearchEdit"
+    import SearchAction from "@/components/SearchAction/SearchAction"
 
     export default {
         name: 'home',
         components: {
-            SearchEdit
+            SearchEdit,
+            SearchAction
         },
         data() {
             return {
@@ -37,8 +39,7 @@
 
     .search_wrap {
         width: 718px;
-        height: 100px;
-        /*background: aqua;*/
+        /*background: rgba(19, 9, 6, 0.09);*/
     }
 
 </style>
