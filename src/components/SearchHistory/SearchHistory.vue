@@ -10,7 +10,7 @@
                 <Icon type="md-close"
                       class="closeIco"
                       :class="mouseOver===index?'closeIcoHover':'closeIcoNo'"
-                      @click="onClose(index)"
+                      @click.stop="onClose(index)"
                 />
             </li>
         </ul>

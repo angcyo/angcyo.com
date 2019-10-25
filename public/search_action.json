@@ -1,0 +1,33 @@
+[
+  {
+    "title": "百度",
+    "colorTop": "#2319DC",
+    "isSelected": true,
+    "url": "https://www.baidu.com/s?wd="
+  },
+  {
+    "title": "谷歌",
+    "colorTop": "#36A854",
+    "url": "https://www.google.com/search?&q="
+  },
+  {
+    "title": "秘迹",
+    "colorTop": "#575757",
+    "url": "https://mijisou.com/?q="
+  },
+  {
+    "title": "必应",
+    "colorTop": "#00EDE9",
+    "url": "https://www.bing.com/search?q="
+  },
+  {
+    "title": "搜狗",
+    "colorTop": "#FE6A13",
+    "url": "https://www.sogou.com/web?query="
+  },
+  {
+    "title": "360搜索",
+    "colorTop": "#0FB264",
+    "url": "https://www.so.com/s?q=123"
+  }
+]

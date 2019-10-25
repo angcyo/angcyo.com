@@ -9,6 +9,7 @@
     import SearchActionItem from "@/components/SearchAction/SearchActionItem/SearchActionItem"
     import './_SearchAction.scss'
     import _ from 'lodash'
+    import axios from 'axios'
 
     export default {
         components: {SearchActionItem},
@@ -23,45 +24,16 @@
         },
         data() {
             return {
-                /**默认搜索项*/
-                defaultItems: [
-                    {
-                        title: "百度",
-                        colorTop: "#2319DC",
-                        isSelected: true,
-                        url: "https://www.baidu.com/s?wd="
-                    },
-                    {
-                        title: "谷歌",
-                        colorTop: "#36A854",
-                        url: "https://www.google.com/search?&q="
-                    },
-                    {
-                        title: "秘迹",
-                        colorTop: "#575757",
-                        url: "https://mijisou.com/?q="
-                    },
-                    {
-                        title: "必应",
-                        colorTop: "#00EDE9",
-                        url: "https://www.bing.com/search?q="
-                    },
-                    {
-                        title: "搜狗",
-                        colorTop: "#FE6A13",
-                        url: "https://www.sogou.com/web?query="
-                    },
-                    {
-                        title: "360搜索",
-                        colorTop: "#0FB264",
-                        url: "https://www.so.com/s?q=123"
-                    }
-                ],
                 actionItems: []
             }
         },
         created() {
-            this.initDefaultItems()
+            /**默认搜索项*/
+            axios.get('./search_action.json')
+                .then(res => {
+                    this.actionItems = res.data
+                    this.initDefaultItems()
+                })
         },
         methods: {
             /**获取选中的历史记录*/
@@ -99,7 +71,7 @@
             clearSelect() {
                 if (this.selectMode === 1) {
                     //单选
-                    const allItems = this.getSelectItems()
+                    const allItems = this.actionItems
                     _.forEach(allItems, item => {
                         item.isSelected = false
                     })
@@ -108,20 +80,29 @@
             },
             initDefaultItems() {
                 /**恢复之前选中状态*/
-                let items = this.getSelectItems() || this.defaultItems
+                const selectItems = this.getSelectItems()
+                let findSelected = false
 
-                _.forEach(this.defaultItems, item => {
-                    const findItem = _.find(items, i => {
-                        return i.title === item.title
-                    })
+                _.forEach(this.actionItems, item => {
+                    if (findSelected && this.selectMode === 1) {
+                        //单选模式
+                        item.isSelected = false
+                    } else {
+                        const findItem = _.find(selectItems, i => {
+                            return i.title === item.title
+                        })
 
-                    if (findItem) {
-                        item.isSelected = findItem.isSelected || false
+                        if (findItem) {
+                            item.isSelected = findItem.isSelected || false
+                        }
+                    }
+
+                    if (item.isSelected) {
+                        findSelected = true
                     }
                 })
 
-                this.actionItems = this.defaultItems
-                this.$emit("onSelectItems", this.defaultItems)
+                this.$emit("onSelectItems", this.actionItems)
                 this.$forceUpdate()
             }
         }

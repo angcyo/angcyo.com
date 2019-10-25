@@ -11,8 +11,8 @@
                    class="SearchInput">
             <div class="SearchActionWrap">
                 <button class="SearchItem SearchMain" title="使用搜索引擎搜索" @click="onEnter"/>
-                <button class="SearchItem SearchApi" title="搜索Android API文档" @click="onSearchApi"/>
-                <button class="SearchItem SearchJcenter" title="搜索Bintray库" @click="onSearchJcenter"/>
+                <button class="SearchItem SearchApi" title="搜索Android API文档(android.view.View)" @click="onSearchApi"/>
+                <button class="SearchItem SearchJcenter" title="搜索Bintray库(com.squareup)" @click="onSearchJcenter"/>
             </div>
         </div>
     </div>
