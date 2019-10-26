@@ -118,7 +118,7 @@
                 } else {
                     window.setTimeout(() => {
                         this.showHistory = false
-                    }, 100)
+                    }, 200)
                 }
             }
         }
