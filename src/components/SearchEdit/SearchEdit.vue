@@ -13,6 +13,7 @@
                 <button class="SearchItem SearchMain" title="使用搜索引擎搜索" @click="onEnter"/>
                 <button class="SearchItem SearchApi" title="搜索Android API文档(android.view.View)" @click="onSearchApi"/>
                 <button class="SearchItem SearchJcenter" title="搜索Bintray库(com.squareup)" @click="onSearchJcenter"/>
+                <button class="SearchItem SearchMvn" title="搜索mvnrepository库(androidx.appcompat:appcompat)" @click="onSearchMvn"/>
             </div>
         </div>
     </div>
@@ -35,6 +36,9 @@
             },
             onSearchJcenter() {
                 this.$emit("onSearchJcenter", this.value)
+            }, 
+            onSearchMvn() {
+                this.$emit("onSearchMvn", this.value)
             },
             onFocus(focused) {
                 this.$emit("onFocus", focused)

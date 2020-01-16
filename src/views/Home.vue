@@ -8,6 +8,7 @@
 
             <SearchEdit v-model="searchKey"
                         @onSearch="onSearch"
+                        @onSearchMvn="onSearchMvn"
                         @onSearchApi="onSearchApi"
                         @onFocus="onFocus"
                         @onSearchJcenter="onSearchJcenter">搜索输入框
@@ -51,6 +52,12 @@
                 //选中的搜索引擎
                 this.searchItems = items
             },
+            onSearchMvn() {
+                this.checkParams(false, () => {
+                    this.saveSearchHistory(this.searchKey)
+                    window.open(`https://mvnrepository.com/artifact/` + this.doUrl2(this.searchKey))
+                })
+            }, 
             onSearchJcenter() {
                 this.checkParams(false, () => {
                     this.saveSearchHistory(this.searchKey)
@@ -89,6 +96,9 @@
             },
             doUrl(raw) {
                 return raw.replace(/\s*/g, "").replace(/\./g, "/").replace('/html', '.html').replace(':', '/')
+            },
+            doUrl2(raw) {
+                return raw.replace(/\s*/g, "").replace('/html', '.html').replace(':', '/')
             },
             getSearchHistory() {
                 const itemsString = window.localStorage.getItem("history_items")

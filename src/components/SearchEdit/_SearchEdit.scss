@@ -85,37 +85,31 @@
       }
 
       .SearchApi {
-        background-color: $action-color;
         mask-image: url("../../assets/android.svg");
-        mask-repeat: no-repeat;
-        mask-position: center center;
-        mask-size: $action-api-size $action-api-size;
+        @extend .ItemBg;
 
         &:hover {
-          background-color: $action-color-hover;
-          mask-size: $action-api-size $action-api-size;
-          cursor: pointer;
+          @extend .ItemBgH;
         }
       }
 
       .SearchJcenter {
-        background-color: $action-color;
         mask-image: url("../../assets/library.svg");
-        mask-repeat: no-repeat;
-        mask-position: center center;
-        mask-size: $action-api-size $action-api-size;
+        @extend .ItemBg;
 
         &:hover {
-          background-color: $action-color-hover;
-          mask-size: $action-api-size $action-api-size;
-          cursor: pointer;
+          @extend .ItemBgH;
+        }
+      }
+
+      .SearchMvn {
+        mask-image: url("../../assets/mvn.svg");
+        @extend .ItemBg;
+
+        &:hover {
+          @extend .ItemBgH;
         }
       }
     }
   }
-
-
-  // Facets
-
-  // States
 }
