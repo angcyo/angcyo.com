@@ -6,19 +6,23 @@
                     @onSelectItems="onSelectItems">选择搜索引擎
             </SearchAction>
 
-            <SearchEdit v-model="searchKey"
+            <SearchEdit @onFocus="onFocus"
                         @onSearch="onSearch"
-                        @onSearchMvn="onSearchMvn"
                         @onSearchApi="onSearchApi"
-                        @onFocus="onFocus"
-                        @onSearchJcenter="onSearchJcenter">搜索输入框
+                        @onSearchJcenter="onSearchJcenter"
+                        @onSearchMvn="onSearchMvn"
+                        v-model="searchKey">搜索输入框
             </SearchEdit>
 
             <SearchHistory :items="historyItems"
                            :show="showHistory"
-                           @onDeleteItem="onDeleteItem"
-                           @onClickItem="onClickItem">搜索历史
+                           @onClickItem="onClickItem"
+                           @onDeleteItem="onDeleteItem">搜索历史
             </SearchHistory>
+        </div>
+
+        <div class="copyright">
+            <a href="http://www.beian.miit.gov.cn" target="_blank">粤ICP备18104350号</a>
         </div>
     </div>
 </template>
@@ -57,7 +61,7 @@
                     this.saveSearchHistory(this.searchKey)
                     window.open(`https://mvnrepository.com/artifact/` + this.doUrl2(this.searchKey))
                 })
-            }, 
+            },
             onSearchJcenter() {
                 this.checkParams(false, () => {
                     this.saveSearchHistory(this.searchKey)
@@ -166,5 +170,12 @@
             margin: 0 10px;
             transform: translateY(0px);
         }
+    }
+
+    .copyright {
+        position: absolute;
+        bottom: 0px;
+        margin: 0 auto;
+        padding: 10px;
     }
 </style>
